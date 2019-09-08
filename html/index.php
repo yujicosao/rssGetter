@@ -5,13 +5,19 @@
             $this->url = $url;
         }
         function getRss(){
-            $rssurl = $this->url . '/?xml';
-            return $rssurl;
+            $rss_url = $this->url . '/?xml';
+            return $rss_url;
+        }
+        function getLivedoorRss(){
+            $rss_url = str_replace("https://ameblo.jp/","",$this->url);
+            $rss_url = str_replace("/","",$rss_url);
+            $rss_url = "http://rssblog.ameba.jp/" . $rss_url . "/rss20.xml";
+            return $rss_url;
         }
     }
     
     $rsser = new Rsser($_POST["rss"]);
-    $rssURL = $rsser->getRss();
+    $rssURL = $rsser->getLivedoorRss();
 
 ?>
 
