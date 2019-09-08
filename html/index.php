@@ -1,3 +1,20 @@
+<?php
+
+    class Rsser{
+        function __construct($url){
+            $this->url = $url;
+        }
+        function getRss(){
+            $rssurl = $this->url . '/?xml';
+            return $rssurl;
+        }
+    }
+    
+    $rsser = new Rsser($_POST["rss"]);
+    $rssURL = $rsser->getRss();
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,7 +30,7 @@
         <input type="submit" value="変換する">
     </form>
         <?php 
-            echo $_POST["rss"];
+            echo $rssURL;
         ?>
 </body>
 </html>
