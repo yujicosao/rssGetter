@@ -19,11 +19,9 @@
 
 
 
-<?php if($_SERVER["REQUEST_METHOD"] != "POST"): ?>
-    get!!!
-<?php else : ?>
+<?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
     <input id="copyTarget" type="text" value="<?php echo $rss_url ?>" readonly>
-    <button onclick="copyToClipboard()">コピー</button>
+    <button onclick="copyToClipboard()">コピー</button>    
 <?php endif ?>
 </body>
 </html>
