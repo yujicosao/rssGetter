@@ -16,18 +16,14 @@
         <input type="submit" value="変換する">
     </form>
 
+
+
+
+<?php if($_SERVER["REQUEST_METHOD"] != "POST"): ?>
+    get!!!
+<?php else : ?>
     <input id="copyTarget" type="text" value="<?php echo $rss_url ?>" readonly>
     <button onclick="copyToClipboard()">コピー</button>
-
-
-    <?php
-// if($_SERVER["REQUEST_METHOD"] != "POST"){
-//     // ブラウザからHTMLページを要求された場合
-//     echo 'get!';
-// }else{
-//     // フォームからPOSTによって要求された場合
-//     echo 'post!';
-// }
-    ?>
+<?php endif ?>
 </body>
 </html>
