@@ -5,7 +5,6 @@
             $this->rss_url = null;
         }
         // 入力されたurlからブログサービスを自動で判別するメソッド
-
         function select_blog(){
             if(strpos($this->url,'https://ameblo.jp/') !== false){
                 return $this->getAmeblo();
@@ -30,7 +29,6 @@
             return $rss_url;
         }
     }
-    
     $rsser = new Rsser($_POST["rss"]);
     $rss_url = $rsser->select_blog();
 ?> 
