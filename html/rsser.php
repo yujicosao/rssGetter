@@ -1,4 +1,7 @@
 <?php
+    // 対応済みブログサービス一覧
+    $service_names = ['アメブロ','ライブドラブログ'];
+
     class Rsser{
         function __construct($url){
             $this->url = $url;
@@ -10,10 +13,12 @@
                 return $this->getAmeblo();
             }elseif(strpos($this->url,'.fc2.') !== false){
                 return $this->getFc2();
-            }
-            
+            }else{
+                return '申し訳ありません。お探しのブログRSSは当サービスの対象外です。';
+            }           
         }
 
+        // 各ブログサービスRSSフィード作成メソッド
         function getFc2(){
             $rss_url = $this->url . '?xml';
             return $rss_url;
