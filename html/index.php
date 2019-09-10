@@ -12,11 +12,12 @@
     <script src="./scripts.js"></script>
 </head>
 <body>
+    <?php require_once('header.php') ?>
     <div class="container mt-200">
 
         <section id="formArea">
             <form action="./index.php" method="post">
-                <h1 class="mb-5">RSSに変換したいブログトップページのURLを入力してください</h1>
+                <h1 class="mb-5">RSSに変換したいブログトップページのURLを<br>入力してください</h1>
                 <div class="form-group form-inline">
                     <input type="text" name="rss" class="form-control">
                     <input type="submit" value="変換する"  class="btn btn-primary">
@@ -41,11 +42,11 @@
         </section>
 
         <section id="tweetbutton_area">
-        <a href="https://twitter.com/intent/tweet?text=<?php echo $_POST["rss"] ?>のRSSフィードは<?php echo $rss_url ?>です" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
+        <a href="https://twitter.com/intent/tweet?text=<?php echo $_POST["rss"] ?>のRSSフィードは<?php echo $rss_url ?>です(RSSフィード取得アプリ http://cosatest.hippy.jp/rsser/)" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">
 tweet
 </a>
         </section>
-        
+
     </div>
 </body>
 </html>
