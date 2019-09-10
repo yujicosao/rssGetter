@@ -12,22 +12,32 @@
     <script src="./scripts.js"></script>
 </head>
 <body>
-
     <div class="container mt-200">
-        <form action="./index.php" method="post">
-            <h1 class="mb-5">RSSに変換したいブログページを入力してください</h1>
-            <div class="form-group form-inline">
-                <input type="text" name="rss" class="form-control">
-                <input type="submit" value="変換する"  class="btn btn-primary">
-            </div>
-        </form>
-        <?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
-            <div class="form-group form-inline">
-                <input id="copyTarget" type="text" value="<?php echo $rss_url ?>" readonly  class="form-control">
-                <button onclick="copyToClipboard()" class="btn btn-primary">コピー</button>
-            </div>
-        <?php endif ?>
-    </div>
+        <section id="formArea">
+            <form action="./index.php" method="post">
+                <h1 class="mb-5">RSSに変換したいブログページを入力してください</h1>
+                <div class="form-group form-inline">
+                    <input type="text" name="rss" class="form-control">
+                    <input type="submit" value="変換する"  class="btn btn-primary">
+                </div>
+            </form>
+        </section>
 
+        <section id="resultArea">
+            <?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+                <div class="form-group form-inline">
+                    <input id="copyTarget" type="text" value="<?php echo $rss_url ?>" readonly  class="form-control">
+                    <button onclick="copyToClipboard()" class="btn btn-primary">コピー</button>
+                </div>
+            <?php endif ?>
+        </section>
+
+        <section id="service_names_area">
+            <h2>当サービスで対応しているブログサービス</h2>
+            <?php foreach($service_names as $service_name): ?>
+                <span class="badge badge-secondary"><?php echo $service_name ?></span>
+            <?php endforeach ?>
+        </section>
+    </div>
 </body>
 </html>
