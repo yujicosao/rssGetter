@@ -1,6 +1,6 @@
 <?php
     // 対応済みブログサービス一覧   
-    $service_names = ['アメブロ','ライブドラブログ','gooブログ'];
+    $service_names = ['アメブロ','ライブドアブログ','gooブログ'];
 
     class Rsser{
         function __construct($url){
