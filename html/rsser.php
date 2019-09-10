@@ -1,6 +1,6 @@
 <?php
     // 対応済みブログサービス一覧   
-    $service_names = ['アメブロ','ライブドアブログ','gooブログ'];
+    $service_names = ['アメブロ','livedoorブログ','gooブログ','fc2ブログ'];
 
     class Rsser{
         function __construct($url){
@@ -9,12 +9,14 @@
         }
         // 入力されたurlからブログサービスを自動で判別するメソッド
         function select_blog(){
-            if(strpos($this->url,'https://ameblo.jp/') !== false){
+            if(strpos($this->url,'https://ameblo.jp') !== false){
                 return $this->getAmeblo();
             }elseif(strpos($this->url,'.fc2.') !== false){
                 return $this->getFc2();
             }elseif(strpos($this->url,'https://blog.goo.ne.jp') !== false){
                 return $this->getGoo();
+            }elseif(strpos($this->url,'http://blog.livedoor.jp') !== false){
+                return $this->getLivedoor();
             }else{
                 return '申し訳ありません。お探しのブログRSSは当サービスの対象外です。';
             }           
@@ -38,6 +40,10 @@
         function getGoo(){
             $rss_url = $this->url . '/index.rdf';
             return $rss_url;      
+        }
+        function getLivedoor(){
+            $rss_url = $this->url . '/index.rdf';
+            return $rss_url;
         }
     }
     $rsser = new Rsser($_POST["rss"]);
