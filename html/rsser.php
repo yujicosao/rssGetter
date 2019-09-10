@@ -1,6 +1,6 @@
 <?php
     // 対応済みブログサービス一覧   
-    $service_names = ['アメブロ','ライブドラブログ'];
+    $service_names = ['アメブロ','ライブドラブログ','gooブログ'];
 
     class Rsser{
         function __construct($url){
@@ -13,6 +13,8 @@
                 return $this->getAmeblo();
             }elseif(strpos($this->url,'.fc2.') !== false){
                 return $this->getFc2();
+            }elseif(strpos($this->url,'https://blog.goo.ne.jp') !== false){
+                return $this->getGoo();
             }else{
                 return '申し訳ありません。お探しのブログRSSは当サービスの対象外です。';
             }           
@@ -32,6 +34,10 @@
             $rss_url = str_replace("/","",$rss_url);
             $rss_url = "http://rssblog.ameba.jp/" . $rss_url . "/rss20.xml";
             return $rss_url;
+        }
+        function getGoo(){
+            $rss_url = $this->url . '/index.rdf';
+            return $rss_url;      
         }
     }
     $rsser = new Rsser($_POST["rss"]);
