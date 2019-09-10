@@ -3,6 +3,8 @@
     $service_names = ['アメブロ','livedoorブログ','gooブログ','fc2ブログ'];
 
     class Rsser{
+        private $url;
+        private $rss_url;
         function __construct($url){
             $this->url = $url;
             $this->rss_url = null;
