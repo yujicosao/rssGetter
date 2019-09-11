@@ -1,4 +1,4 @@
-<?php require_once( 'rsser.php') ?>
+<?php require_once('rsser.php') ?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -26,17 +26,22 @@
         </section>
 
         <section id="resultArea">
-            <?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
-                <div class="form-group form-inline">
-                    <input id="copyTarget" type="text" value="<?php echo $rss_url ?>" readonly  class="form-control">
-                    <button onclick="copyToClipboard()" class="btn btn-primary">コピー</button>
-                </div>
-                <section id="actions_area">
-                    <a href="https://twitter.com/intent/tweet?text=<?php echo $_POST["rss"] ?>のRSSフィードは<?php echo $rss_url ?>です(RSSフィード取得アプリ http://cosatest.hippy.jp/rsser/)" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">取得したRSSフィードをtweetする</a>
-                    <br>
-                    <a href="https://feedly.com/i/discover/sources/search/feed/<?php echo urlencode($rss_url) ?>" target="_blank" >feedlyで登録する</a>
-                </section>
+            <?php if($rsser->getIs_service()) :?>
+                <?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+                    <div class="form-group form-inline">
+                        <input id="copyTarget" type="text" value="<?php echo $rss_url ?>" readonly  class="form-control">
+                        <button onclick="copyToClipboard()" class="btn btn-primary">コピー</button>
+                    </div>
+                    <section id="actions_area">
+                        <a href="https://twitter.com/intent/tweet?text=<?php echo $_POST["rss"] ?>のRSSフィードは<?php echo $rss_url ?>です(RSSフィード取得アプリ http://cosatest.hippy.jp/rsser/)" onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;" rel="nofollow" class="twitter-link">取得したRSSフィードをtweetする</a>
+                        <br>
+                        <a href="https://feedly.com/i/discover/sources/search/feed/<?php echo urlencode($rss_url) ?>" target="_blank" >feedlyで登録する</a>
+                    </section>
+                <?php endif ?>
+            <?php else: ?>
+                <p><?php echo $rss_url ?></p>
             <?php endif ?>
+
         </section>
 
         <section id="service_names_area">
