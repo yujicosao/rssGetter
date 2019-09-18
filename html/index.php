@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="https://kit.fontawesome.com/2bdc0ce76c.js"></script>
     <script src="./scripts.js"></script>
+    <?php require_once("googleTracking.php") ?>
 </head>
 <body>
     <?php require_once('header.php') ?>
