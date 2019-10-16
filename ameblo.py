@@ -5,7 +5,7 @@ class Rsser:
         rssurl = self.url.replace("https://ameblo.jp/","").strip("/")
         rssurl = "http://rssblog.ameba.jp/" + rssurl + "/rss20.xml"
         return rssurl
-url = input('rssを取得したいブログのurlを入力してください\n')
+url = input('rssを取得したいブログのurlを入力してください。\n')
 
 rss = Rsser(url)
 
